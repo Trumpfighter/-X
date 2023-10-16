@@ -1,7 +1,4 @@
-hostname = mp.weixin.qq.com, ms.jr.jd.com, me-api.jd.com, api.m.jd.com, app.bilibili.com, mp.weixin.qq.com, *.docer.wps.cn, vipapi.wps.cn, account.wps.cn, account.wps.cn, *account.wps.com, weixin110.qq.com, security.wechat.com, pan.baidu.com, xluser-ssl.xunlei.com, cokemv.me, *.pornhub.com, www.lezhutv.com, www.bimi*.net, 18comic.org, www.o8tv.com, 555dy.vip,www.5*.com,www.5*.cc, gimytv.app, www.tkys.tv, www.qianoo.cn, *.zhenbuka*.*, www.libvio.me, 
-
-#去除微信公众号文章底部广告    mp.weixin.qq.com
-^https?:\/\/mp\.weixin\.qq\.com\/mp\/getappmsgad url script-response-body https://raw.githubusercontent.com/NobyDa/Script/master/QuantumultX/File/Wechat.js
+hostname = mp.weixin.qq.com, ms.jr.jd.com, me-api.jd.com, api.m.jd.com, app.bilibili.com,  *.bdstatic.com, mp.weixin.qq.com, *.docer.wps.cn, vipapi.wps.cn, account.wps.cn, account.wps.cn, *account.wps.com, weixin110.qq.com, security.wechat.com, pan.baidu.com, xluser-ssl.xunlei.com, cokemv.me, *.pornhub.com, www.lezhutv.com, www.bimi*.net, 18comic.org, www.o8tv.com, 555dy.vip,www.5*.com,www.5*.cc, gimytv.app, www.tkys.tv, www.qianoo.cn, *.zhenbuka*.*, www.libvio.me, 
 
 # WPS解锁  超级会员、wps会员、稻壳会员  *.docer.wps.cn, vipapi.wps.cn, account.wps.cn, account.wps.cn, *account.wps.com
 # > WPS解锁稻壳会员
@@ -39,7 +36,6 @@ hostname = mp.weixin.qq.com, ms.jr.jd.com, me-api.jd.com, api.m.jd.com, app.bili
 # > 06 剧迷[网页优化] - 网站地址：https://gimytv.app
 ^https?:\/\/gimytv\.(app\/$|app\/(browse\/)?[0-9a-zA-Z-_]+\.html) url script-response-body https://qxnav.com/rules/QuantumultX/js/backup/js/gimytv.js
 
-
 # > 04 天空影视[网页优化]@ - 网站地址：https://www.tkys.tv
 ^https?:\/\/www\.tkys\.(tv\/$|tv\/(voddetail|vodplay)\/[0-9a-z-]+\.html$) url script-response-body https://qxnav.com/rules/QuantumultX/js/backup/js/tkys.js
 
@@ -59,8 +55,23 @@ hostname = mp.weixin.qq.com, ms.jr.jd.com, me-api.jd.com, api.m.jd.com, app.bili
 # 美团外卖开屏广告
 ^https?:\/\/wmapi\.meituan\.com\/api\/v\d+\/loadInfo\? url reject
 
-# ================ 去除广告 ================
+# 京东去广告
+^https?:\/\/api\.m\.jd\.com\/client\.action\?functionId=start url reject-dict
+^https?:\/\/api\.m\.jd.com\/client\.action\?functionId=queryMaterialAdverts url reject
+^https?:\/\/(bdsp-x|dsp-x)\.jd\.com\/adx\/ url reject
+^https?:\/\/api\.m\.jd\.com\/client\.action\?functionId=hotWords url script-response-body https://github.com/ddgksf2013/Scripts/raw/master/jd_json.js
+^https?:\/\/api\.m\.jd\.com\/client\.action\?functionId=hotSearchTerms url script-response-body https://github.com/ddgksf2013/Scripts/raw/master/jd_json.js
 
+# 百度地图开屏广告
+^https:\/\/dss0\.bdstatic\.com\/.+/tam-ogel\/.+\.jpg url reject
+^https:\/\/dss0\.bdstatic\.com\/.+/tam-ogel\/.+\.(jpg|mp4) url reject
+^https?:\/\/bp-api\.bestv\.com\.cn\/cms\/api\/free\/open\/advertisingV2 url reject
+^https?:\/\/bp-api\.bestv\.com\.cn\/cms\/api\/c\/home\/searchMark url reject
+
+#去除微信公众号文章底部广告    mp.weixin.qq.com
+^https?:\/\/mp\.weixin\.qq\.com\/mp\/getappmsgad url script-response-body https://raw.githubusercontent.com/NobyDa/Script/master/QuantumultX/File/Wechat.js
+
+# ================ 去除广告 ================
 
 # 获取多账号京东Cookie      me-api.jd.com
 https:\/\/me-api\.jd\.com\/user_new\/info\/GetJDUserInfoUnion url script-request-header https://qxnav.com/rules/QuantumultX/js/JD_extra_cookie.js
